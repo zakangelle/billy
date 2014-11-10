@@ -2,36 +2,6 @@ var test        = require('tape');
 var Promise     = require('bluebird');
 var Application = require('../lib/Application.js');
 
-
-test('config setting', function(t) {
-  t.plan(3);
-  var app = new Application();
-
-  app.config('a', 1);
-  t.strictEqual(app.config('a'), 1);
-
-  app.config('b.c.e', 2);
-  t.strictEqual(app.config('b.c.e'), 2);
-
-  t.deepEqual(app.config('b'), { c: { e: 2 } });
-});
-
-test('config setting shared', function(t) {
-  t.plan(4);
-  var app = new Application();
-
-  app.config('ns.a', 1);
-  t.strictEqual(app.config('ns').a, 1);
-
-  app.config('ns.b', 2);
-  t.strictEqual(app.config('ns.b'), 2);
-
-  app.config('ns.c.d.e.f.g', 3);
-  t.strictEqual(app.config.ns.c.d.e.f.g, 3);
-
-  t.strictEqual(app.config('does.not.exist'), undefined);
-});
-
 test('new and not new instanshe', function(t) {
   t.plan(2);
   var app = new Application();
@@ -43,13 +13,12 @@ test('new and not new instanshe', function(t) {
 });
 
 test('auto registers', function(t) {
-  t.plan(2);
+  t.plan(1);
 
   var app = new Application();
   app.start();
 
   t.strictEqual(app.make('app'), app);
-  t.strictEqual(app.make('config'), app.config);
 });
 
 test('services called in order after start', function(t) {
@@ -213,23 +182,4 @@ test('convenience functions', function(t) {
 
   t.strictEqual(app.make('instance'), T);
 });
-
-test('register default instance', function(t) {
-  t.plan(2);
-
-  var app = new Application();
-
-  var Config = function() { };
-  var config = new Config();
-
-  app.registerDefaultInstance('config', config);
-
-  t.strictEqual(app.make('config'), config);
-
-  var abc = {};
-  app.registerInstance('config', abc);
-  t.strictEqual(app.make('config'), abc);
-
-});
-
 
