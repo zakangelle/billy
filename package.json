@@ -14,31 +14,17 @@
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
-    "jsdoc": "^3.3.0-alpha9",
-    "jsdoc3-bootstrap": "^0.7.1",
-    "tape": "^3.0.0"
+    "jsdoc": "^3.3.0-alpha10",
+    "jsdoc3-bootstrap": "^0.15.0",
+    "tape": "^3.0.2"
   },
   "repository": {
     "type": "git",
     "url": "git@github.com:bvalosek/billy.git"
   },
-  "testling": {
-    "files": "test/*.js",
-    "browsers": [
-      "ie/6..latest",
-      "chrome/28..canary",
-      "firefox/23..nightly",
-      "safari/5.1..latest",
-      "opera/latest",
-      "opera/next",
-      "iphone/latest",
-      "ipad/latest",
-      "android-browser/latest"
-    ]
-  },
   "dependencies": {
-    "bluebird": "^2.3.2",
-    "debug": "^2.0.0",
+    "bluebird": "^2.3.11",
+    "debug": "^2.1.0",
     "sack": "^2.2.0",
     "typedef": "^1.1.0"
   }
