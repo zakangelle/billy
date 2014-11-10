@@ -154,14 +154,6 @@ boot up.
 $ npm test
 ```
 
-## Documentation
-
-This will generate the HTML documentation under `./doc`:
-
-```
-$ npm run doc
-```
-
 ## License
 
 MIT
