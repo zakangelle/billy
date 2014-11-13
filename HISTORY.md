@@ -1,5 +1,16 @@
 # Change History
 
+## v2.0.0 (???)
+
+* Removed deprecated `Application#manifest` and `Application#container`
+  methods.
+* Removed deprecated property `Application#config`
+* Removed the `ConfigStore` class (reworked configuration patterns coming in
+  future release)
+* `Application#service` now throws when trying to register a service more than
+  once
+* Added `AbstractService` reference interface
+
 ## v1.7.0 (2014-10-12)
 
 * Added `Application#registerDefaultInstance` method

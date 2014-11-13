@@ -55,7 +55,7 @@ scaffolding that allows you to roll your own application architecture stack.
 ## Services
 
 Billy views your application as the composition of several dependency-injected
-Services. When the application is started via `app.start()`, all registered
+Services. When the application is started via `app.start()`, all added
 services will be instantiated in turn and be given a chance to startup.
 
 A service should be used to create various run-time objects and register them
@@ -63,17 +63,25 @@ as dependencies with the IoC container via the `app` dependency for other parts
 of the application to use.
 
 Services are effectively the place where all the various pieces of your
-application are booted, configured, and wired together.
+application are booted, configured, and wired together. The should stay very
+lean and not contain any business logic-- keep that in your billy-unaware layer
+of the application.
 
-### Registering a service
+## Dependencies
 
-Your application entry point will register a series of services that will power
+TBD - high level overview of dependencies
+
+## Usage
+
+### Adding a Service
+
+Your application entry point will add a series of services that will power
 your app. Services can either be a simple closure or a class constructor, and
 can optionally use promises to signal an asynchronous startup.
 
-### Using closures as a Service
+### Adding a closure as a Service
 
-The simplest example of a service is a function:
+The simplest example of a service is a single function:
 
 ```javascript
 app.service(function main() {
@@ -99,7 +107,7 @@ Note that all services are first *created* all at once (by calling the provided
 function), synchronously. Then, all of the services are *started* (by waiting
 on any promises returned in the service function).
 
-#### Using Class Constructors as a Service
+### Using Class Constructors as a Service
 
 A simple class constructor can be passed to the `app.service()` method as well.
 
@@ -147,6 +155,14 @@ This is useful for things like downloading external data, verifying
 credentials, bootstrapping external connections, etc. The application startup
 process will block until the service resolves, guaranteeing a deterministic
 boot up.
+
+### Registering Dependencies
+
+TBD
+
+### Creating Injected Objects
+
+TBD
 
 ## Testing
 
